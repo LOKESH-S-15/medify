@@ -1,0 +1,34 @@
+.LastNewsCon {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  padding: 5% 10% 5% 10%;
+}
+.LastNewsPara {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #2aa7ff;
+}
+.LastNewsHead {
+  font-family: Poppins;
+  font-size: 38px;
+  font-weight: 600;
+
+  color: #1b3c74;
+}
+.LastNewsCardCon {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+@media screen and (max-width: 720px) {
+  .LastNewsHead {
+    font-size: 28px;
+  }
+  .LastNewsCardCon {
+    flex-wrap: wrap;
+  }
+}

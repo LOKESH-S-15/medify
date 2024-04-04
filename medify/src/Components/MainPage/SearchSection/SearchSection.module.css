@@ -1,0 +1,136 @@
+.SearchSectionCon {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 60%;
+  background-color: #ffffff;
+  box-shadow: 0px 8px 8px 8px rgba(128, 152, 155, 0.1);
+  padding: 4%;
+  z-index: 10;
+  top: 60%;
+  gap: 20%;
+}
+.SearchSectionDetailsCardhead {
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  color: #102851;
+}
+.SearchSectionInputCardCon {
+  display: flex;
+  justify-content: space-between;
+}
+.SearchSectionInputCon {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.SearchSectionInputBtn {
+  width: 120px;
+  font-family: Poppins;
+
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  width: 20%;
+
+  border-radius: 10px !important;
+  opacity: 0px;
+}
+.SearchSectionDetailsCardCon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20%;
+}
+.SearchSectionSelectedTabCon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  width: 20%;
+  padding: 10px;
+  border: 1px solid #2aa7ff;
+}
+.SearchSectionDetailsCon {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+.SearchSectionTabImg {
+  height: 50px;
+  width: 50px;
+}
+.SearchSectionTabImg img {
+  height: 100%;
+  width: 100%;
+}
+.SearchSectionTabCon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  width: 20%;
+  padding: 10px;
+}
+.SearchSectionTabText {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 5px;
+  color: #abb6c7;
+}
+.SearchSectionInput {
+  width: 40% !important;
+  height: 50% !important;
+}
+.SearchSectionInput input {
+  height: 50% !important;
+}
+
+@media screen and (max-width: 1120px) {
+  .SearchSectionDetailsCardCon {
+    gap: 10%;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .SearchSectionTabText {
+    font-size: 12px;
+  }
+  .SearchSectionInput {
+    width: 200px !important;
+    height: 30px !important;
+  }
+  /* .SearchSectionInput input {
+    height: 10px !important;
+  } */
+  /* .SearchSectionInput label {
+    padding: none;
+  } */
+  /* .SearchSectionInputBtn {
+    width: 120px;
+  }
+  .SearchSectionCon {
+    gap: 20px;
+  } */
+  .SearchSectionTabImg {
+    height: 30px;
+    width: 30px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .SearchSectionCon {
+    height: 70%;
+  }
+}

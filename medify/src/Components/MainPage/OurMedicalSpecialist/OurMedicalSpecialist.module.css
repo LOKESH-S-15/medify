@@ -1,0 +1,70 @@
+.swiper-slide {
+  width: auto !important;
+}
+.OurMedicalSpecialistCardCon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.OurMedicalSpecialistCardImgCon {
+  width: 270px;
+  height: 315px;
+  padding: 20px;
+  padding-bottom: 0;
+  gap: 0px;
+  border-radius: 250px 250px 8px 8px;
+  opacity: 0px;
+  box-shadow: 0px 15px 55px -10px #00000017;
+  background: linear-gradient(144.2deg, #e1f3ff 0%, #2aa7ff 100%);
+}
+.OurMedicalSpecialistCardImgCon img {
+  height: 100%;
+  width: 100%;
+}
+.OurMedicalSpecialistCardHead {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 5px;
+  color: #1b3c74;
+}
+.OurMedicalSpecialistCardPara {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+
+  color: #2aa7ff;
+}
+.OurMedicalSpecialistHead {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+
+  font-family: Poppins;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 67px;
+  text-align: center;
+  color: #1b3c74;
+}
+@media screen and (max-width: 1120px) {
+  .OurMedicalSpecialistCardImgCon {
+    width: 230px;
+    height: 275px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .OurMedicalSpecialistCardImgCon {
+    width: 180px;
+    height: 225px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .OurMedicalSpecialistCardImgCon {
+    width: 120px;
+    height: 165px;
+  }
+}
