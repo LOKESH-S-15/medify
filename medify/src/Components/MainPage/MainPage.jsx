@@ -9,6 +9,8 @@ import OurMedicalSpecialist from "./OurMedicalSpecialist/OurMedicalSpecialist";
 import PaitentCare from "./PaitentCare/PaitentCare";
 import LastNews from "./LatestNews/LastNews";
 import OurFamily from "./OurFamily/OurFamily";
+import HeadLine from "../HeadLine";
+import Faqs from "./Faqs/Faqs";
 const MainPage = () => {
   const getMedicalCenter = async (state, city) => {
     const MedicalCenters = await MedicalCentersApi(state, city);
@@ -17,6 +19,7 @@ const MainPage = () => {
 
   return (
     <div className="">
+      <HeadLine />
       <Header />
 
       {<HeroSection />}
@@ -27,6 +30,7 @@ const MainPage = () => {
       <PaitentCare />
       <LastNews />
       <OurFamily />
+      <Faqs />
     </div>
   );
 };

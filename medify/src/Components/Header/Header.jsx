@@ -17,35 +17,47 @@ import Button from "@mui/material/Button";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Logo } from "../Image/Image";
-const Header = () => {
+import { Navigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+const Header = ({ selectedTab }) => {
   const drawerWidth = 240;
   const navItems = [
     "Find Doctors",
     "Hospitals",
     "Medicines",
     "Surgeries",
-    "Software for Provider",
     "Facilities",
   ];
 
   // const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [value, setValue] = React.useState("one");
+  const [value, setValue] = React.useState(selectedTab);
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
+    const pathname = `/${newValue}`;
+
+    if (newValue === "Find Doctors") {
+      navigate(pathname);
+    }
+
     setValue(newValue);
   };
   const handleMenu = (value) => {
-    console.log(value);
+    const pathname = `/${value}`;
+    if (value === "Find Doctors") navigate(pathname);
     setValue(value);
   };
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <Logo />
+        <Link to={`/`}>
+          {" "}
+          <Logo />
+        </Link>
       </Typography>
       <Divider />
 
@@ -69,23 +81,35 @@ const Header = () => {
       </List>
     </Box>
   );
-  // window?: () => Window;
-  // const container =
-  //   window !== undefined ? () => Window().document.body : undefined;
 
-  return (
-    <Box
-      sx={{
+  const HeaderStyle = (selectedTab) => {
+    console.log(selectedTab);
+    if (selectedTab) {
+      return {
+        display: "flex",
+        justifyContent: "space-between",
+        backgroundColor: "#FFFFFF",
+        backgroundImage: "none",
+      };
+    } else {
+      return {
         display: "flex",
         justifyContent: "space-between",
         background: "transparent",
-      }}
-    >
+      };
+    }
+  };
+  return (
+    <Box className={style.nav}>
       <CssBaseline />
-      <AppBar component="nav" className={style.AppBar}>
+      <AppBar
+        component="nav"
+        className={style.AppBar}
+        sx={{ backgroundImage: "none" }}
+      >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
-            color="inherit"
+            color="#2AA7FF"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
@@ -98,7 +122,10 @@ const Header = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", md: "block" } }}
           >
-            <Logo />
+            <Link to={`/`}>
+              {" "}
+              <Logo />
+            </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", md: "block" } }}>
             <Tabs
@@ -111,7 +138,7 @@ const Header = () => {
               {navItems.map((item) => (
                 <Tab
                   key={item}
-                  sx={{ color: "#102851" }}
+                  sx={{ color: "#102851", fontSize: "14px" }}
                   value={item}
                   label={item}
                 />
@@ -119,7 +146,14 @@ const Header = () => {
             </Tabs>
           </Box>
 
-          <button className="login-btn">Login</button>
+          <Button
+            variant="contained"
+            className={style.BookinBtn}
+            color="primary"
+          >
+            {" "}
+            My Booking
+          </Button>
         </Toolbar>
       </AppBar>
       <nav>

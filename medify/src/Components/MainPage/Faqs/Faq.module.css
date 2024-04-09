@@ -1,0 +1,76 @@
+.AccordionSum {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: left;
+  color: #1b3c74;
+  background: transparent !important;
+}
+.faqsCon {
+}
+.Accordion {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  margin-bottom: 5%;
+}
+.Accordion::before {
+  position: relative !important;
+}
+.faqsCon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+}
+.faqspara {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #2aa7ff;
+}
+.faqsHead {
+  font-family: Poppins;
+  font-size: 48px;
+  font-weight: 600;
+  text-align: center;
+  color: #1b3c74;
+}
+
+.faqsBottomCon {
+  display: flex;
+}
+.faqsImgCon {
+  width: 50%;
+}
+.faqsImg {
+  width: 100%;
+}
+.faqsImg img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.faqsAccCon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+@media screen and (max-width: 760px) {
+  .faqsImgCon {
+    display: none;
+  }
+  .faqsAccCon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+  .Accordion {
+    margin-bottom: 2%;
+  }
+}

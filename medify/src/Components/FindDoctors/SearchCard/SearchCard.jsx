@@ -1,40 +1,52 @@
 import React, { useState, useEffect } from "react";
-
+import style from "./SearchCard.module.css";
 import Autocomplete from "@mui/material/Autocomplete";
-import { CityApi, StateApi } from "../../Api/Api";
+import { CityApi, StateApi, MedicalCentersApi } from "../../Api/Api";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
-import style from "./SearchSection.module.css";
-import { useNavigate } from "react-router-dom";
-
-import {
-  Docter,
-  Lab,
-  Ambulance,
-  MedicalStore,
-  Hospital,
-} from "./../../Image/Image";
-import InputAdornment from "@mui/material/InputAdornment";
-const SearchSection = ({}) => {
-  const [selectTab, setSelectTab] = useState("");
+const SearchCard = ({handleMedicalCenters}) => {
   const [searchValue, setSearchValue] = useState({ state: "", city: "" });
   const [cityList, setCityList] = useState([]);
   const [stateList, setStateList] = useState([]);
-  const navigate = useNavigate();
+  const [medicalCenters, setmedicalCenters] = useState([]);
 
   const getStates = async () => {
     const states = await StateApi();
 
     return states;
   };
+  const getMedicalCenters = async (state, city) => {
+    const MedicalCenters = await MedicalCentersApi(state, city);
+    return MedicalCenters;
+  };
   const getCities = async (state) => {
     const cities = await CityApi(state);
     return cities;
   };
-  function handleClick(value) {
-    setSelectTab(value);
-  }
+
+  useEffect(() => {
+    getfromLocalStorage();
+    const fetchData = async () => {
+      const state = await getStates();
+      setStateList(state);
+    };
+    fetchData();
+  }, []);
+  const getfromLocalStorage = () => {
+    const search = localStorage.getItem("search");
+    if (search) {
+      const data = JSON.parse(search);
+      handleSearch(data);
+      handleStateInput(data.state);
+
+      setSearchValue({ ...data });
+    }
+  };
+  const handleStateInput = async (state) => {
+    const cities = await getCities(state);
+    setCityList(cities);
+  };
   const handleInput = (state, city) => {
     console.log(city);
     if (city || city === null) {
@@ -44,61 +56,17 @@ const SearchSection = ({}) => {
       setSearchValue({ ...searchValue, state: state });
     }
   };
-  useEffect(() => {
-    const fetchData = async () => {
-      const state = await getStates();
-      setStateList(state);
-    };
-    fetchData();
-  }, []);
-
-  const handleStateInput = async (state) => {
-    const cities = await getCities(state);
-    setCityList(cities);
-  };
-  const serachCardDetails = [
-    { img: Docter, label: "Docter" },
-    { img: Lab, label: "Lab" },
-    { img: Ambulance, label: "Ambulance" },
-    { img: MedicalStore, label: "Medical Store" },
-    { img: Hospital, label: "Hospital" },
-  ];
-
-  const handleSearch = (searchValue) => {
-    localStorage.setItem("search", JSON.stringify(searchValue));
-    navigate("/Find Doctors");
-  };
-
-  const SearchSectionTab = ({ item }) => {
-    const select = () => {
-      return selectTab === item.label
-        ? style.SearchSectionSelectedTabCon
-        : style.SearchSectionTabCon;
-    };
-    console.log(select());
-    return (
-      <div className={select()} onClick={() => handleClick(item.label)}>
-        <div className={style.SearchSectionTabImg}>
-          <item.img />
-        </div>
-        {selectTab === item.label ? (
-          <h1
-            className={style.SearchSectionTabText}
-            style={{ color: "#2AA7FF" }}
-          >
-            {item.label}
-          </h1>
-        ) : (
-          <h1 className={style.SearchSectionTabText}> {item.label}</h1>
-        )}
-      </div>
+  const handleSearch = async (searchValue) => {
+    console.log(searchValue);
+    const MedicalCenters = await getMedicalCenters(
+      searchValue.state,
+      searchValue.city
     );
+    handleMedicalCenters(MedicalCenters);
   };
-  console.log(searchValue.state);
-  console.log(searchValue.city);
-
+  console.log(medicalCenters);
   return (
-    <div className={style.SearchSectionCon}>
+    <div className={style.SearchCardCon}>
       <div className={style.SearchSectionInputCardCon}>
         <div className={style.SearchSectionInputCon}>
           <Autocomplete
@@ -142,18 +110,8 @@ const SearchSection = ({}) => {
           Search
         </Button>
       </div>
-      <div className={style.SearchSectionDetailsCardCon}>
-        <h4 className={style.SearchSectionDetailsCardhead}>
-          You may be looking for
-        </h4>
-        <div className={style.SearchSectionDetailsCon}>
-          {serachCardDetails.map((each, index) => {
-            return <SearchSectionTab item={each} key={index} />;
-          })}
-        </div>
-      </div>
     </div>
   );
 };
 
-export default SearchSection;
+export default SearchCard;
