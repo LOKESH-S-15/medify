@@ -16,8 +16,6 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const MedicalCenterCard = ({ center, timeSlot }) => {
-  console.log(timeSlot.date);
-  console.log(center);
   return (
     <div className={style.MedicalCenterCardCon}>
       <div className={style.MedicalCenterCardTopCon}>

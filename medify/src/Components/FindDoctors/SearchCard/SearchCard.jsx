@@ -66,7 +66,7 @@ const SearchCard = ({ handleMedicalCenters, handleProgess }) => {
     handleMedicalCenters(MedicalCenters);
     handleProgess(false);
   };
-  console.log(medicalCenters);
+
   return (
     <div className={style.SearchCardCon}>
       <div className={style.SearchSectionInputCardCon}>

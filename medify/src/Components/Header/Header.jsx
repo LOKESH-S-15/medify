@@ -86,7 +86,6 @@ const Header = ({ selectedTab }) => {
   );
 
   const HeaderStyle = (selectedTab) => {
-    console.log(selectedTab);
     if (selectedTab) {
       return {
         display: "flex",

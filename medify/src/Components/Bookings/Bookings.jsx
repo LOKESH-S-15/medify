@@ -14,7 +14,7 @@ const Bookings = () => {
   }, []);
   const getfromLocalStorage = () => {
     const search = localStorage.getItem("booking");
-    console.log(search);
+
     if (search) {
       const data = JSON.parse(search);
       setmedicalCenters(data);

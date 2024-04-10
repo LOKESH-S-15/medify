@@ -1,11 +1,11 @@
 import * as React from "react";
-import PropTypes from "prop-types";
+
 import Divider from "@mui/material/Divider";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
+
 import Box from "@mui/material/Box";
 import Tabs, { tabsClasses } from "@mui/material/Tabs";
-import { style } from "@mui/system";
+
 import styles from "./BookingSection.module.css";
 function TabPanel(props) {
   const { children, value, index, slots, handleBooking, center, ...other } =
@@ -191,7 +191,6 @@ export default function BookingSection({
   };
 
   const tabSection = (slot, index) => {
-    console.log(slot);
     const tab = (
       <div className={styles.tabSectionCon}>
         <h1 className={styles.tabSectionhead}>{getTimeOfSlots(slot.date)}</h1>
