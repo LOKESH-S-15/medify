@@ -14,14 +14,10 @@ import {
   Autoplay,
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import BookingSection from "../BookingSection/BookingSection";
 
-const MedicalCenterCard = ({ center, timeSlotsList, handleBooking }) => {
-  const [bookingTab, setBookingTab] = React.useState(false);
-  const showBooking = (value) => {
-    setBookingTab(value);
-  };
-
+const MedicalCenterCard = ({ center, timeSlot }) => {
+  console.log(timeSlot.date);
+  console.log(center);
   return (
     <div className={style.MedicalCenterCardCon}>
       <div className={style.MedicalCenterCardTopCon}>
@@ -42,35 +38,19 @@ const MedicalCenterCard = ({ center, timeSlotsList, handleBooking }) => {
               {center["Hospital Type"]}
             </p>
             <p className={style.MedicalCenterCardtype}>More</p>
-            <p className={style.MedicalCenterCardPrice}>
-              <span> Free </span>
-              <span>₹ 500</span>
-              Consultation fee at clinic
-            </p>
+
             <div className={style.MedicalCenterCardRating}></div>
           </div>
         </div>
         <div className={style.MedicalCenterCardBookCon}>
-          <p></p>
-          <Button
-            className={style.MedicalCenterCardBookbtn}
-            variant="contained"
-            onClick={() => showBooking(true)}
-          >
-            Book An appointment
-          </Button>
+          <p>{timeSlot.time}</p>
+          <p>{`${new Date(timeSlot.date).getDate()} ${new Date(
+            timeSlot.date
+          ).toLocaleDateString("en-US", {
+            month: "long",
+          })} ${new Date(timeSlot.date).getFullYear()}`}</p>
         </div>
       </div>
-
-      {bookingTab ? (
-        <BookingSection
-          timeSlotsList={timeSlotsList}
-          handleBooking={handleBooking}
-          center={center}
-        />
-      ) : (
-        <></>
-      )}
     </div>
   );
 };

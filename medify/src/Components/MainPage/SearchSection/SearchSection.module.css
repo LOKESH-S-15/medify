@@ -129,8 +129,3 @@
     width: 30px;
   }
 }
-@media screen and (max-width: 720px) {
-  .SearchSectionCon {
-    height: 70%;
-  }
-}

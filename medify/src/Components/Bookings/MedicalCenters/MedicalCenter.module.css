@@ -1,0 +1,35 @@
+.MedicalCentersCon {
+  margin: 15% 10% 5% 10%;
+  width: 100%;
+}
+.MedicalCentersMainCon {
+}
+.MedicalCentershead {
+  margin: 0;
+}
+.MedicalCentersParaCon {
+  display: flex;
+}
+
+.MedicalCentersSubCon {
+  width: 100%;
+  display: flex;
+}
+.MedicalCentersCardCon {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.MedicalCentersCardSubCon {
+  width: 40%;
+  height: 40%;
+}
+@media (max-width: 960px) {
+  .MedicalCentersCardCon {
+    width: 80%;
+  }
+  .MedicalCentersCardSubCon {
+    display: none;
+  }
+}

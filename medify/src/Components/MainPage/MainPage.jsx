@@ -10,7 +10,9 @@ import PaitentCare from "./PaitentCare/PaitentCare";
 import LastNews from "./LatestNews/LastNews";
 import OurFamily from "./OurFamily/OurFamily";
 import HeadLine from "../HeadLine";
-import Faqs from "./Faqs/Faqs";
+import Faqs from "../Footer/Faqs/Faqs";
+import ConnetUs from "../Footer/ConnetUs/ConnetUs";
+import Footer from "../Footer/Footer";
 const MainPage = () => {
   const getMedicalCenter = async (state, city) => {
     const MedicalCenters = await MedicalCentersApi(state, city);
@@ -30,7 +32,7 @@ const MainPage = () => {
       <PaitentCare />
       <LastNews />
       <OurFamily />
-      <Faqs />
+      <Footer />
     </div>
   );
 };

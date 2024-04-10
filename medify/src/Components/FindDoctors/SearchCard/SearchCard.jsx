@@ -5,7 +5,7 @@ import { CityApi, StateApi, MedicalCentersApi } from "../../Api/Api";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
-const SearchCard = ({handleMedicalCenters}) => {
+const SearchCard = ({ handleMedicalCenters, handleProgess }) => {
   const [searchValue, setSearchValue] = useState({ state: "", city: "" });
   const [cityList, setCityList] = useState([]);
   const [stateList, setStateList] = useState([]);
@@ -57,12 +57,14 @@ const SearchCard = ({handleMedicalCenters}) => {
     }
   };
   const handleSearch = async (searchValue) => {
-    console.log(searchValue);
+    handleProgess(true);
+
     const MedicalCenters = await getMedicalCenters(
       searchValue.state,
       searchValue.city
     );
     handleMedicalCenters(MedicalCenters);
+    handleProgess(false);
   };
   console.log(medicalCenters);
   return (

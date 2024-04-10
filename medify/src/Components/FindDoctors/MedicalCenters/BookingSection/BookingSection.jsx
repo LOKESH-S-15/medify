@@ -18,6 +18,12 @@ function TabPanel(props) {
     return `${hour12}:${minuteString} ${amPm}`;
   }
   const TabContent = ({ slots, handleBooking }) => {
+    const handleBookingSlot = (item) => {
+      handleBooking(
+        { date: slots.date, time: convert24to12Hour(item) },
+        center
+      );
+    };
     return (
       <div className={styles.TabContentCon}>
         <div className={styles.TabContentSectionCon}>
@@ -42,9 +48,7 @@ function TabPanel(props) {
                   label={
                     <button
                       className={styles.TabContentSlotsBtn}
-                      onClick={() =>
-                        handleBooking(convert24to12Hour(item), center)
-                      }
+                      onClick={() => handleBookingSlot(item)}
                     >
                       {convert24to12Hour(item)}
                     </button>
@@ -72,9 +76,7 @@ function TabPanel(props) {
                   label={
                     <button
                       className={styles.TabContentSlotsBtn}
-                      onClick={() =>
-                        handleBooking(convert24to12Hour(item), center)
-                      }
+                      onClick={() => handleBookingSlot(item)}
                     >
                       {convert24to12Hour(item)}
                     </button>
@@ -102,9 +104,7 @@ function TabPanel(props) {
                   label={
                     <button
                       className={styles.TabContentSlotsBtn}
-                      onClick={() =>
-                        handleBooking(convert24to12Hour(item), center)
-                      }
+                      onClick={() => handleBookingSlot(item)}
                     >
                       {convert24to12Hour(item)}
                     </button>

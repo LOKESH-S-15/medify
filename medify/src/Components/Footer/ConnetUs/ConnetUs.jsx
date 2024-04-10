@@ -15,11 +15,11 @@ const ConnetUs = () => {
           <div className={style.ConnetUsConnectImgCon}>
             <div className={style.ConnetUsLogo}>
               <div className={style.ConnetUsImg}>
-                <Vector />
+                <img src={Vector} alt="logo" />
               </div>
               <h1 className={style.ConnetUsLogoText}>Medify</h1>
             </div>
-            <div>
+            <div className={style.ConnetimgCon}>
               <div className={style.ConnectImg}>
                 <FaFacebookF />
               </div>
@@ -43,25 +43,25 @@ const ConnetUs = () => {
                 About Us
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Our Pricing
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Our Gallery
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Appointment
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Privacy Policy
@@ -77,25 +77,25 @@ const ConnetUs = () => {
                 About Us
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Our Pricing
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Our Gallery
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Appointment
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Privacy Policy
@@ -111,25 +111,25 @@ const ConnetUs = () => {
                 About Us
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Our Pricing
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Our Gallery
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Appointment
               </a>
             </li>
-            <li>
+            <li className={style.MoreListItem}>
               <MdOutlineKeyboardArrowLeft className={style.MoreListImg} />
               <a href="#" className={style.MoreListText}>
                 Privacy Policy
@@ -139,7 +139,9 @@ const ConnetUs = () => {
         </div>
       </div>
       <Divider />
-      <h1></h1>
+      <h1 className={style.copy}>
+        Copyright ©2023 Surya Nursing Home.com. All Rights Reserved
+      </h1>
     </div>
   );
 };

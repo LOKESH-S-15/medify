@@ -1,12 +1,36 @@
 import React from "react";
 import MedicalCenterCard from "./MedicalCenterCard/MedicalCenterCard";
 import styles from "./MedicalCenter.module.css";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 const MedicalCenters = ({ medicalCenters }) => {
   const [timeSlotsList, setTimeSlotsList] = React.useState([]);
-
+  const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
     FetchTimeSlot();
   }, []);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      setOpen(false);
+    }
+
+    setOpen(false);
+  };
+  const action = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
   const FetchTimeSlot = () => {
     const timeSlots = getNext7DaysTimeSlots();
     setTimeSlotsList(timeSlots);
@@ -80,10 +104,42 @@ const MedicalCenters = ({ medicalCenters }) => {
 
     return timeSlotsList;
   };
+  const validateBooking = (bookingData, slot, center) => {
+    console.log(bookingData);
+    const isValid = bookingData.filter((item) => {
+      console.log(
+        item.center["Provider ID"] === center["Provider ID"] &&
+          item.slot.date === slot.date &&
+          item.slot.time === slot.time
+      );
+
+      return (
+        item.center["Provider ID"] === center["Provider ID"] &&
+        new Date(item.slot.date).getTime() === new Date(slot.date).getTime() &&
+        item.slot.time === slot.time
+      );
+    });
+    console.log(isValid);
+    return isValid.length === 0 ? false : true;
+  };
 
   const handleBooking = (slot, center) => {
-    console.log(slot);
-    console.log(center);
+    const bookedAppointment = JSON.parse(localStorage.getItem("booking"));
+    if (bookedAppointment) {
+      if (validateBooking(bookedAppointment, slot, center)) {
+        setOpen(true);
+      } else {
+        localStorage.setItem(
+          "booking",
+          JSON.stringify([...bookedAppointment, { slot: slot, center: center }])
+        );
+      }
+    } else {
+      localStorage.setItem(
+        "booking",
+        JSON.stringify([{ slot: slot, center: center }])
+      );
+    }
   };
 
   return (
@@ -114,6 +170,16 @@ const MedicalCenters = ({ medicalCenters }) => {
           </div>
           <div className={styles.MedicalCentersCardSubCon}></div>
         </div>
+      </div>
+      <div>
+        <Snackbar
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message="alreday  booked"
+          action={action}
+        />
       </div>
     </div>
   );

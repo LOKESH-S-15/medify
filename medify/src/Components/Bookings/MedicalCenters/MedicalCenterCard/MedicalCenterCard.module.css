@@ -38,14 +38,7 @@
   height: 70px;
   object-fit: contain;
 }
-.MedicalCenterCardPrice span:nth-child(even) {
-  text-decoration: line-through;
-}
-.MedicalCenterCardPrice span:nth-child(1) {
-  font-weight: 700;
 
-  color: #02a401;
-}
 .MedicalCenterCardDetailsSubCon {
   display: flex;
   flex-direction: column;
@@ -81,8 +74,9 @@
 }
 .MedicalCenterCardBookCon {
   display: flex;
+  gap: 20px;
+  align-items: start;
 
-  align-items: end;
   width: 30%;
 }
 .MedicalCenterCardBookCon p {

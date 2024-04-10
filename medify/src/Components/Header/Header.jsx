@@ -38,7 +38,7 @@ const Header = ({ selectedTab }) => {
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
-    const pathname = `/${newValue}`;
+    const pathname = `./../../${newValue}`;
 
     if (newValue === "Find Doctors") {
       navigate(pathname);
@@ -46,8 +46,11 @@ const Header = ({ selectedTab }) => {
 
     setValue(newValue);
   };
+  const handleBooking = () => {
+    navigate("./../Bookings");
+  };
   const handleMenu = (value) => {
-    const pathname = `/${value}`;
+    const pathname = `./../${value}`;
     if (value === "Find Doctors") navigate(pathname);
     setValue(value);
   };
@@ -105,7 +108,7 @@ const Header = ({ selectedTab }) => {
       <AppBar
         component="nav"
         className={style.AppBar}
-        sx={{ backgroundImage: "none" }}
+        sx={HeaderStyle(selectedTab)}
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
@@ -150,8 +153,8 @@ const Header = ({ selectedTab }) => {
             variant="contained"
             className={style.BookinBtn}
             color="primary"
+            onClick={() => handleBooking()}
           >
-            {" "}
             My Booking
           </Button>
         </Toolbar>
